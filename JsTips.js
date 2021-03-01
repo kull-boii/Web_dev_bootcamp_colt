@@ -43,3 +43,16 @@ const sort = (arr) => arr.sort((a, b) => a - b);
 let array = [0, 1, 2, 3, 4, 5, 6, 6, 8, 9];
 array.length = 4;
 // Result: [0, 1, 2, 3]
+
+// 10] Set is useful to remove duplicate elements
+let mySet = new Set().add(1).add(2).add(3);
+console.log(mySet);
+mySet.add(4);
+mySet.add(1);
+console.log(mySet.size, mySet); // do remember its size and not length of Set
+
+// 11] Array.from()
+// The Array.from method creates a new array from an array-like structure:
+let dupeArray = [3, 2, 3, 3, 5, 2];
+let uniqueArray = Array.from(new Set(dupeArray)); // turns set into array
+console.log(uniqueArray);
