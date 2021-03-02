@@ -56,3 +56,45 @@ console.log(mySet.size, mySet); // do remember its size and not length of Set
 let dupeArray = [3, 2, 3, 3, 5, 2];
 let uniqueArray = Array.from(new Set(dupeArray)); // turns set into array
 console.log(uniqueArray);
+
+// 12] preference
+// https://dev.to/coderslang/js-test-3-adding-strings-to-numbers-and-booleans-3l2o
+console.log("2" - 9); // -7
+console.log("2" + 9); // "29"
+console.log(2 - true); // 1
+console.log(2 + true); // 3
+
+// 13] check if the given variable is array
+Array.isArray(nums) ? console.log(true) : console.log(false);
+// or
+nums instanceof Array ? console.log(true) : console.log(false);
+
+// 14] Array.findIndex
+const num = array.findIndex((a) => a === 2); // returns the index where the condtion will be true
+
+// 15] Array.filter will return an array of items that meet the given condition.
+// It takes a callback function that returns a given condition.filter returns a new array.;
+const numArray = array.filter((a) => a === 2); // returns [2]
+
+// 16]  Array.map returns a new array which transforms the existing array’s element by calling the mapFunction .
+// mapFunction takes one argument, which is the array element.
+let arr = [1, 2, 3, 4];
+const newArr = arr.map((a) => a * 2);
+console.log(newArr); // [2,4,6,8]
+
+// 17] FilterMap
+// filterMap is better than using two function calls of map and filter separately
+// because you would need to go through the array twice.From the perspective of functional programming,
+const filterMap = (checker, mapper, list) =>
+  list.reduce(
+    (acc, current) =>
+      checker(current) ? acc.push(mapper(current)) && acc : acc,
+    []
+  );
+
+const subjects = ["React", "Nodejs"];
+const checker = (a) => a.length > 2;
+const upper = (a) => a.toUpperCase();
+
+filterMap(checker, upper, subjects); // ["REACT", "NODEJS"]
+
