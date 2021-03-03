@@ -98,3 +98,66 @@ const upper = (a) => a.toUpperCase();
 
 filterMap(checker, upper, subjects); // ["REACT", "NODEJS"]
 
+// 18 passing parameters.. clean code
+// often we have to pass multiple arguments to the fuunction call and we forget the order and which argumnets we have to pass
+// therefore using object destructuring we can pass arguments easily
+// refernce : https://www.instagram.com/p/CLUdOSPK0yn/?utm_source=ig_web_copy_link
+let firstName = "Aadi";
+
+const createUser = ({ firstName, lastName, isAdmin }) => {
+  console.log(firstName);
+  firstName = "xyz"; // suppose we change the value
+  console.log(firstName); // value changed, lets see if there is change in the global scope
+};
+
+// clean way of passing parameters also the order doesnt matters
+createUser({
+  firstName: firstName,
+  lastName: "Manchekar",
+  isAdmin: true,
+});
+
+console.log(firstName); // returns Aadi
+// therefore it doesnt affect the global namespace
+
+/* the only time it wil change the global namespace is  when we use
+user.firstName instead of firstName
+user.firstName refers global object
+firstName refers local copy 
+
+NOTE : parameters are not available in arrow function
+so if ur using arrow function dont worry about anything as it cant change the global namespace variables*/
+
+/* 
+const createUser = function ({ firstName, lastName, isAdmin }) {
+  const user = arguments[0];
+  console.log(firstName);
+  console.log("User Created", user);
+  firstName = "xyz";
+  lastName = "abc";
+  console.log(firstName);
+};
+
+const myUser = {
+  firstName: "Aadi",
+  lastName: "Manchekar",
+  isAdmin: true,
+};
+createUser(myUser);
+console.log(myUser);
+ */
+
+/* typeof  => unary operator
+
+> typeof null
+'object'
+> typeof Array
+'function'
+> typeof Array()
+'object'
+> typeof Date
+'function'
+> typeof Date()
+'string'
+> typeof undefined
+'undefined' */
